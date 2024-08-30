@@ -1,7 +1,11 @@
 FROM node:12-buster-slim
 
-RUN apt update
-RUN apt install -y netcat python2.7 make g++ && apt-get clean
+RUN apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends \
+    netcat \
+    python2.7 \
+    make \
+    g++ \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN ln -s /usr/bin/python2.7 /usr/bin/python
 
